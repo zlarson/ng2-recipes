@@ -1,0 +1,23 @@
+<div *ngIf="recipe == null" class="alert alert-info" role="alert">Select a Recipe</div>
+<div *ngIf="recipe != null">
+	<h3>Selected Recipe: {{recipe.name}}</h3>
+	<span>
+		<a (click)="onEdit()">Edit</a> | <a (click)="onDelete()">Delete</a>
+	</span>
+	
+	<div class="row">
+		<div class="col-md-9">
+			<img [src]="recipe.imageUrl" class="thumbnail" style="width: 500px;">
+			<p>{{recipe.content}}</p>
+		</div>
+		<div class="col-md-3">
+			<h4>Ingredients</h4>
+			<ul class="list-group">
+				<li *ngFor="#item of recipe.ingredients" class="list-group-item">
+					{{item.name}} ({{item.amount}})
+				</li>
+			</ul>
+			<button class="btn btn-success" (click)="onAddToShoppingList()">Add to Shopping List</button>
+		</div>
+	</div>
+</div>

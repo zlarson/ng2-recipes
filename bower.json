@@ -1,0 +1,22 @@
+{
+  "name": "angular2-boilerplate",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Zach Larson <zlarson@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "bootstrap": "^3.3.6"
+  }
+}
