@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Edit Recipe</h3>
+	</div>
+	<div class="panel-body">
+		<form [ngFormModel]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
+			<span><button type="submit" class="btn btn-success" [disabled]="!f.valid">Save</button></span>
+			<span><a class="btn btn-danger" (click)="onCancel()">Cancel</a></span>
+			<div>
+				<label for="name">Title</label>
+				<input tpe="text" id="name" [ngFormControl]="myForm.controls['name']">
+			</div>
+			<div>
+				<label for="image-url">Image URL</label>
+				<input tpe="text" id="image-url" #imageUrl  [ngFormControl]="myForm.controls['imageUrl']">
+			</div>
+			<div>
+				<img [src]="imageUrl.value">
+			</div>
+			<div>
+				<label for="content">Content</label>
+				<textarea type="text" id="content" rows="6" [ngFormControl]="myForm.controls['content']"></textarea>
+			</div>
+			<ul>
+				<li *ngFor="#item of myForm.controls['ingredients'].controls; #i = index">
+					<input tpe="text" id="item-name" [ngFormControl]="item.controls['name']">
+					<input tpe="text" id="image-amount" [ngFormControl]="item.controls['amount']">
+					<button class="btn btn-danger btn-xs" (click)="onRemoveItem(i)">remove</button>
+				</li>
+			</ul>
+		</form>
+		<hr>
+		<div>
+			<input tpe="text" id="item-name" #itemName>
+			<input tpe="text" id="image-amount" #itemAmount>
+			<button class="btn btn-link" (click)="onAddItem(itemName.value, itemAmount.value)">Add New Item</button>
+		</div>
+	</div>
+</div>

@@ -11,19 +11,19 @@ import {RecipeService} from './recipe-service';
         <h3 class="panel-title">All Recipes</h3>
       </div>
       <div class="panel-body">
-        <button class="btn">Add Recipe</button>
+        <button class="btn" (click)="onAddRecipe()">Add Recipe!</button>
    <br/>
    <br/>
-   <ul class="media-list">
-    <li class="media" *ngFor="#item of recipes" (click)="onSelect(item)">
-      <div class="media-left">
-          <img class="media-object thumbnail" [src]="item.imageUrl" style="width: 200px;">
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">{{item.name}}</h4>
-      </div>
-    </li>
-  </ul>
+       <ul class="media-list">
+        <li class="media" *ngFor="#item of recipes" (click)="onSelect(item)">
+          <div class="media-left">
+              <img class="media-object thumbnail" [src]="item.imageUrl" style="width: 200px;">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{item.name}}</h4>
+          </div>
+        </li>
+      </ul>
       </div>
     </div>
 
@@ -42,4 +42,8 @@ export class RecipeListComponent implements OnInit {
   onSelect(item : Recipe){
     this._router.navigate(['RecipeDetail', { recipeIndex: Number(this._recipeService.getRecipeIndex(item)) }]); //imperative routing
   }
+
+  onAddRecipe() {
+        this._router.navigate(['RecipeEdit', {editMode: 'create'}]);
+    }
 }
